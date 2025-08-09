@@ -1,0 +1,351 @@
+@use 'utilities/variables';
+@use 'utilities/mixins';
+@use 'utilities/extends';
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding-top: 100px;
+  font-family: variables.$main-font;
+}
+
+// Navbar
+.navbar {
+  @include mixins.flex(space-between);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: variables.$primary-color;
+  padding: 10px 20px;
+
+  .logo img {
+    width: 80px;
+    height: auto;
+  }
+
+  .menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    li a {
+      @extend %nav-link;
+
+      &:hover {
+        background-color: darken(variables.$primary-color, 10%);
+      }
+    }
+  }
+}
+
+// Sección principal
+.contenido-principal {
+  .secciones {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 40px;
+    padding: 40px;
+    margin: 40px 0 100px;
+
+    .imagen {
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: mixins.$box-shadow;
+    }
+
+    .texto {
+      background-color: variables.$primary-color;
+      border-radius: 10px;
+      box-shadow: mixins.$box-shadow;
+      padding: 20px;
+      flex: 1;
+
+      h2 {
+        color: white;
+        font-size: 30px;
+        text-decoration: underline;
+      }
+
+      .parrafo {
+        text-align: justify;
+        color: white;
+        font-size: 30px;
+      }
+
+      .pagina-samcor {
+        margin-top: 40px;
+
+        a {
+          @extend %button;
+
+          &:hover {
+            background-color: white;
+            color: rgb(0, 0, 0);
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Separador
+.separador {
+  width: 100%;
+  height: 10px;
+  background-color: variables.$primary-color;
+  margin: 40px 0;
+  border-radius: 7px;
+}
+
+// Carrusel
+.carrusel-1 {
+  margin-top: 80px;
+  height: 530px;
+}
+
+.carrousel {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  .conteCarrousel {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+
+    .itemCarrousel {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      justify-content: center;
+
+      .itemCarrouselTarjeta {
+        width: 100%;
+        height: 500px;
+        justify-content: center;
+
+        img {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+        }
+
+        .info {
+          position: absolute;
+          bottom: 0;
+          padding: 20px 30px;
+
+          h2 {
+            color: white;
+            font-family: Impact, sans-serif;
+            font-size: 50px;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-left: 30px;
+          }
+
+          p {
+            color: white;
+            font-family: Impact, sans-serif;
+            font-size: 40px;
+            background-color: rgba(226, 0, 132, 0.61);
+            width: 65%;
+            padding: 50px;
+            border-radius: 10px;
+            margin-left: 30px;
+          }
+        }
+      }
+
+      .itemCarrouselArrows {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        pointer-events: none;
+
+        a {
+          background-color: variables.$primary-color;
+          padding: 12px;
+          border-radius: 50%;
+          text-decoration: none;
+          pointer-events: all;
+
+          i {
+            font-size: 30px;
+            color: white;
+          }
+
+          &:hover {
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .conteCarrousel .itemCarrousel .info p {
+      width: 20%;
+      min-width: 200px;
+      padding: 0px;
+    }
+  }
+}
+
+// Galería
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.galeria {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px;
+  flex-wrap: wrap;
+
+  img {
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: mixins.$box-shadow;
+    animation: zoomInOut 3s ease-in-out infinite;
+
+    &:hover {
+      opacity: 0.7;
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(216, 1, 144, 0.979);
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+// Footer
+.pie-pagina {
+  width: 100%;
+  background-color: variables.$primary-color;
+
+  .grupo-1 {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 20px 0;
+
+    .box {
+      figure {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 250px;
+        }
+      }
+
+      h2 {
+        color: #fff;
+        margin-bottom: 25px;
+        font-size: 20px;
+      }
+
+      p {
+        color: #efefef;
+        margin-bottom: 10px;
+      }
+
+      .red-social a {
+        display: inline-block;
+        text-decoration: none;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        color: #fff;
+        margin-right: 10px;
+        background-color: #990047;
+        text-align: center;
+        transition: all 300ms ease;
+
+        &:hover {
+          color: rgb(255, 0, 179);
+        }
+      }
+    }
+  }
+
+  .grupo-2 {
+    background-color: #ac0352;
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+
+    small {
+      font-size: 15px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .pie-pagina .grupo-1  .grupo-2{
+      width: 90%;
+      grid-template-columns: repeat(3,1fr);
+      grid-gap: 30px;
+      padding: 35px 0px;
+    }
+  }
+}
+// Páginas secundarias: personas, empresas, agro
+
+.contenido-principal-2,
+.contenido-principal-3 {
+  flex: 1;
+}
+
+.texto1, .texto2, .texto3 {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: mixins.$box-shadow;
+  padding: 20px;
+  flex: 1;
+
+  h2 {
+    padding: 20px;
+    color: variables.$primary-color;
+    text-align: center;
+    font-size: 30px;
+    font-family: variables.$main-font;
+    text-decoration: underline;
+  }
+
+  .parrafo1, .parrafo2, .parrafo3 {
+    text-align: justify;
+    color: variables.$primary-color;
+    font-size: 30px;
+    font-family: variables.$main-font;
+  }
+}
