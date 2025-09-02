@@ -1,0 +1,10 @@
+# Ignorar node_modules si usas npm
+node_modules/
+
+# Ignorar archivos compilados de CSS
+*.css.map
+/dist/
+
+# Ignorar logs o archivos temporales
+*.log
+.DS_Store
