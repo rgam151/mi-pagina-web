@@ -41,6 +41,19 @@ header {
   font-weight: 200;
 }
 
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .menu a {
   color: white;
   text-transform: uppercase;
